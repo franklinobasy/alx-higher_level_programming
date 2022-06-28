@@ -4,7 +4,6 @@ number = random.randint(-10000, 10000)
 
 if number < 0:
     remainder = number % -10
-    remainder = -1 * remainder
 else:
     remainder = number % 10
 
