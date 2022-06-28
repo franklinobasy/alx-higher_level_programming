@@ -4,5 +4,5 @@ while i <= 122:
     if i == 113 or i == 101:
         i += 1
     else:
-        print(f"{i:c}", end="")
+        print("{i:c}".format(i), end="")
         i += 1
