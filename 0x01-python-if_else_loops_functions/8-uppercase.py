@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 
 def uppercase(str):
+    special_chars = " ,"
     for c in str:
         ascii = ord(c)
-        ascii = ascii - 32
+        if c not in special_chars:
+            if ascii >= 97:
+                ascii = ascii - 32
         print("{0:c}".format(ascii), end="")
     print()
