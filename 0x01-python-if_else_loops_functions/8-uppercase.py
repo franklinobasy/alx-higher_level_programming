@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def uppercase(str):
-    special_chars = " ,"
+    special_chars = " ,-_@^*&%$!"
     for c in str:
         ascii = ord(c)
         if c not in special_chars:
