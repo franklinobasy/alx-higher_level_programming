@@ -10,7 +10,9 @@
 
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *prev, *later, *new, *current;
+	listint_t *prev;
+	listint_t *new;
+	listint_t *current;
 	int n;
 
 	current = *head;
