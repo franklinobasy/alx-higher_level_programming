@@ -10,7 +10,4 @@ if __name__ == '__main__':
         print(f"{n-1:d} argument:" if n == 2 else f"{n-1:d} arguments:")
         for i in range(1, n):
             print(f"{i:d}: {argv[i]:s}")
-
-
-
-    
+                
