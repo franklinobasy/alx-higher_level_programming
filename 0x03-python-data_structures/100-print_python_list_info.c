@@ -14,12 +14,14 @@ void print_python_list_info(PyObject *p)
 {
         PyListObject *listobject;
         PyObject *element;
-        int length, i;
+        int length, i, alloc;
 
         listobject = (PyListObject *)p;
         length = Py_SIZE(p);
+        alloc = (listobject)->allocated;
 
         printf("[*] Size of the python List = %d\n", length);
+        printf("[*] Allocated = %d\n", alloc);
 
         i = 0;
         while (i < length)
