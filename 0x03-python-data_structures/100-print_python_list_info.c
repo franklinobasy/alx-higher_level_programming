@@ -1,4 +1,6 @@
 #include <Python.h>
+#include <object.h>
+#include <listobject.h>
 
 /**
  * print_python_list_info - print some basic info about
