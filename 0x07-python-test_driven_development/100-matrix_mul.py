@@ -3,6 +3,7 @@
 Module composed by a function that multiplies 2 matrices
 """
 
+
 def matrix_mul(m_a, m_b):
     """ Function that multiplies 2 matrices
     Args:
@@ -30,6 +31,14 @@ def matrix_mul(m_a, m_b):
 
 
 def dot_product(v1, v2):
+    """Function to perform dot product
+    Args:
+        v1: vector1
+        v2: vector2
+
+    Returns:
+        scalar result
+    """
     sum = 0
     for i, j in zip(v1, v2):
         sum += (i * j)
@@ -38,6 +47,14 @@ def dot_product(v1, v2):
 
 
 def validateMat(mat_A, mat_B):
+    """Function to validate matrices
+    Args:
+        mat_A: matrix A
+        mat_B: matrix B
+
+    Returns:
+        number of rows and number of cols
+    """
     if not isinstance(mat_A, list):
         raise TypeError("m_a must be a list")
     elif not isinstance(mat_A[0], list):
@@ -67,7 +84,6 @@ def validateMat(mat_A, mat_B):
             raise ValueError("m_b can't be empty")
     except IndexError:
         raise ValueError("m_b can't be empty")
-    
 
     for row in mat_A:
         for val in row:
@@ -100,6 +116,13 @@ def validateMat(mat_A, mat_B):
 
 
 def transpose(mat):
+    """Function to transpose a matrix
+    Args:
+        mat: Matrix to transpose
+
+    Returns:
+        tranposed matrix
+    """
     ncol = len(mat[0])
     nrow = 1
     for row in mat[1:]:
@@ -117,6 +140,15 @@ def transpose(mat):
 
 
 def linear_to_shape(linear_v, nrow, ncol):
+    """converts a vector to nrow x ncol matrix
+    Args:
+        linear_v: 1D vector
+        nrow: number of rows
+        ncol: number of columns
+
+    Returns:
+        nrow x ncol matrix
+    """
     mat = []
     vector = linear_v.copy()
     for i in range(nrow):
@@ -129,6 +161,3 @@ def linear_to_shape(linear_v, nrow, ncol):
             break
 
     return mat
-
-if __name__ == "__main__":
-    print(matrix_mul([], [[1]]))
