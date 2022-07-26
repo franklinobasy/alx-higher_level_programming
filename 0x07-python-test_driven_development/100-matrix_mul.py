@@ -1,0 +1,116 @@
+
+def matrix_mul(m_a, m_b):
+    nrow, ncol = validateMat(m_a, m_b)
+    m_b_T = transpose(m_b)
+
+    linear_v = []
+    for row in m_a:
+        for col in m_b_T:
+            linear_v.append(dot_product(row, col))
+
+    return linear_to_shape(linear_v, ncol, nrow)
+
+
+def dot_product(v1, v2):
+    sum = 0
+    for i, j in zip(v1, v2):
+        sum += (i * j)
+
+    return sum
+
+
+def validateMat(mat_A, mat_B):
+    if not isinstance(mat_A, list):
+        raise TypeError("m_a must be a list")
+    elif not isinstance(mat_A[0], list):
+        raise TypeError("m_a must be a list of lists")
+    else:
+        for row in mat_A[1:]:
+            if not isinstance(row, list):
+                raise TypeError("m_a must be a list of lists")
+
+    if not isinstance(mat_B, list):
+        raise TypeError("m_b must be a list")
+    elif not isinstance(mat_B[0], list):
+        raise TypeError("m_b must be a list of lists")
+    else:
+        for row in mat_B[1:]:
+            if not isinstance(row, list):
+                raise TypeError("m_b must be a list of lists")
+
+    try:
+        if not mat_A or not mat_A[0]:
+            raise ValueError("m_a can't be empty")
+    except IndexError:
+        raise ValueError("m_a can't be empty")
+
+    try:
+        if not mat_B or not mat_B[0]:
+            raise ValueError("m_b can't be empty")
+    except IndexError:
+        raise ValueError("m_b can't be empty")
+    
+
+    for row in mat_A:
+        for val in row:
+            if not isinstance(val, (int, float)):
+                raise TypeError("m_a should contain only integers or floats")
+
+    for row in mat_B:
+        for val in row:
+            if not isinstance(val, (int, float)):
+                raise TypeError("m_b should contain only integers or floats")
+
+    for i in range(1, len(mat_A)):
+        if len(mat_A[i]) != len(mat_A[i-1]):
+            raise TypeError("each row of m_a must be of the same size")
+
+    for i in range(1, len(mat_B)):
+        if len(mat_B[i]) != len(mat_B[i-1]):
+            raise TypeError("each row of m_b must be of the same size")
+
+    ncol = len(mat_A[0])
+
+    nrow = 0
+    for row in mat_B:
+        nrow += 1
+
+    if ncol == nrow:
+        return (nrow, ncol)
+
+    raise ValueError("m_a and m_b can't be multiplied")
+
+
+def transpose(mat):
+    ncol = len(mat[0])
+    nrow = 1
+    for row in mat[1:]:
+        nrow += 1
+        if len(row) != ncol:
+            return ValueError("m_a and m_b can't be multiplied")
+
+    matT = [[0 for j in range(nrow)] for i in range(ncol)]
+
+    for j in range(ncol):
+        for i in range(nrow):
+            matT[j][i] = mat[i][j]
+
+    return matT
+
+
+def linear_to_shape(linear_v, nrow, ncol):
+    mat = []
+    vector = linear_v.copy()
+    for i in range(nrow):
+        temp = []
+        try:
+            for j in range(ncol):
+                temp.append(vector.pop(0))
+            mat.append(temp)
+        except IndexError:
+            break
+
+    return mat
+
+if __name__ == "__main__":
+    print(matrix_mul([], [[1]]))
