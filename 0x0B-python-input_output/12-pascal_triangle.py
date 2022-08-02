@@ -16,9 +16,6 @@ def pascal_triangle(n):
     if n == 1:
         return [[1]]
 
-    if n == 2:
-        return triangle
-
     for term in range(3, n + 1):
         temp = []
         last_term = triangle[-1]
@@ -29,3 +26,5 @@ def pascal_triangle(n):
         temp.append(1)
         triangle.append(temp)
     return triangle
+
+print(pascal_triangle(2))
