@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""10-class_to_json.py
+"""8-class_to_json.py
 """
 
 
