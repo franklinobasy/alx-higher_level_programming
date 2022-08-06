@@ -97,25 +97,10 @@ class Rectangle(Base):
     def update(self, *args, **kwargs):
         if args:
             n = len(args)
-            if n == 1:
-                self.id = args[0]
-            elif n == 2:
-                self.id, self.width = args
-            elif n == 3:
-                self.id, self.width, self.height = args
-            elif n == 4:
-                self.id, self.width, self.height, self.x = args
-            elif n == 5:
-                self.id, self.width, self.height, self.x, self.y = args
+            attr = ['id', 'width', 'height', 'x', 'y']
+            for i in range(n):
+                setattr(self, attr[i], args[i])
         else:
             for k,v in kwargs.items():
-                if k == "id":
-                    self.id = v
-                elif k == "height":
-                    self.height = v
-                elif k == "width":
-                    self.width = v
-                elif k == "x":
-                    self.x = v
-                elif k == "y":
-                    self.y = v
+                if hasattr(self, k):
+                    setattr(self, k, v)
