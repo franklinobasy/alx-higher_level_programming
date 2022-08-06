@@ -81,7 +81,8 @@ class Rectangle(Base):
         self.__y = value
 
     def __str__(self) -> str:
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
+            {self.width}/{self.height}"
 
     def area(self):
         ''' Returns area of Rectangle object'''
@@ -101,7 +102,7 @@ class Rectangle(Base):
             for i in range(n):
                 setattr(self, attr[i], args[i])
         else:
-            for k,v in kwargs.items():
+            for k, v in kwargs.items():
                 if hasattr(self, k):
                     setattr(self, k, v)
 
