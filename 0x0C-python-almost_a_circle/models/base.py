@@ -5,6 +5,7 @@
 
 from fileinput import filename
 import json
+from turtle import width
 
 
 class Base:
@@ -47,3 +48,10 @@ class Base:
 
         with open(file_name, "w") as file_object:
             file_object.write(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        ''' returns an instance with all attributes already set '''
+        obj = cls(1, 1)
+        obj.update(**dictionary)
+        return obj
