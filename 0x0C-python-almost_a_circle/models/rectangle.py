@@ -82,7 +82,7 @@ class Rectangle(Base):
 
     def __str__(self) -> str:
         s1 = f"[Rectangle] ({self.id}) {self.x}/{self.y}"
-        s2 = f"- {self.width}/{self.height}"
+        s2 = f" - {self.width}/{self.height}"
         return s1 + s2
 
     def area(self):
@@ -94,7 +94,7 @@ class Rectangle(Base):
         for i in range(self.y):
             print()
         for i in range(self.height):
-            print(" " * (self.x), "#" * (self.width))
+            print(" " * (self.x), "#" * (self.width), sep="")
 
     def update(self, *args, **kwargs):
         if args:
