@@ -15,7 +15,7 @@ if __name__ == "__main__":
                                                     sys.argv[2],
                                                     sys.argv[3])
         )
-    
+
     Session = sessionmaker(bind=engine)
     session = Session()
 
