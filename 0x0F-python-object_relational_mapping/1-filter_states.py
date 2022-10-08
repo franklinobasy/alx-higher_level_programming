@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-A script that lists all states with a name starting 
+A script that lists all states with a name starting
 with N (upper N) from the database hbtn_0e_0_usa
 '''
 
@@ -35,6 +35,7 @@ def list_states(username, password, database_name):
 
     cursor.close()
     connection.close()
+
 
 if __name__ == "__main__":
     argv = sys.argv[1:]
