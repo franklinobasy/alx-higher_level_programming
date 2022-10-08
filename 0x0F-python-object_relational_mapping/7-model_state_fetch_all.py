@@ -15,7 +15,7 @@ if __name__ == "__main__":
                                                     sys.argv[2],
                                                     sys.argv[3])
         )
-    Base.metadata.create_all(engine)
+    #Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
