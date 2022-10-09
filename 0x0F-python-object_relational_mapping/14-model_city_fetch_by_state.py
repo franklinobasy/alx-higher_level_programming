@@ -9,7 +9,7 @@ from model_state import Base, State
 from model_city import City
 
 from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import relationship, sessionmaker
 
 if __name__ == "__main__":
     engine = create_engine(
@@ -22,6 +22,9 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
+
+    State.cities = relationship("City",
+                                order_by=City.id, back_populates="state")
 
     query = session.query(State, City).\
         filter(City.state_id == State.id).all()
