@@ -19,4 +19,4 @@ if __name__ == "__main__":
     req = urllib.request.Request(url, data)
 
     with urllib.request.urlopen(req) as resp:
-         print(resp.read().decode("utf-8"))
+        print(resp.read().decode("utf-8"))
