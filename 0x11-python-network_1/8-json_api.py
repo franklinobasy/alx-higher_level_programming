@@ -1,27 +1,19 @@
 #!/usr/bin/python3
-"""
-Python script that sends a POST request to the URL and
-to an URL with the letter as a parameter
-"""
-import requests
-import sys
+""" first implementation of API's """
 
+if __name__ == '__main__':
+    from sys import argv
+    from requests import post
 
-if __name__ == "__main__":
-    data = {'q': ""}
-
-    try:
-        data['q'] = sys.argv[1]
-    except Exception as e:
-        pass
-
-    r = requests.post('http://0.0.0.0:5000/search_user', data)
+    url = 'http://0.0.0.0:5000/search_user'
+    letter = '' if len(argv) == 1 else argv[1]
+    res = post(url, data={'q': letter})
 
     try:
-        json_o = r.json()
-        if not json_o:
-            print("No result")
+        res_json = res.json()
+        if res_json == {}:
+            print('No result')
         else:
-            print("[{}] {}".format(json_o.get('id'), json_o.get('name')))
-    except Exception as e:
-        print("Not a valid JSON")
+            print(f'[{res_json.get("id")}] {res_json.get("name")}')
+    except Exception:
+        print('Not a valid JSON')
