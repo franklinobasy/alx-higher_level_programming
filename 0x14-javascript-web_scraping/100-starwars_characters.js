@@ -8,11 +8,15 @@ request(uri, (err, response, body) => {
   if (err) {
     console.error(err);
   } else {
-    const characters_uri = JSON.parse(body).characters;
+    const charactersUri = JSON.parse(body).characters;
 
-    characters_uri.forEach(character_uri => {
-      request(character_uri, (err, resp, body) => {
-        console.log(JSON.parse(body).name);
+    charactersUri.forEach(characterUri => {
+      request(characterUri, (err, resp, body) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(JSON.parse(body).name);
+        }
       });
     });
   }
