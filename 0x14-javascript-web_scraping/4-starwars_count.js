@@ -12,7 +12,7 @@ request(uri, (err, resp, body) => {
     let n = 0;
 
     results.forEach(result => {
-      let characters = result.characters;
+      const characters = result.characters;
 
       characters.forEach(character => {
         if (character.endsWith('18/')) {
