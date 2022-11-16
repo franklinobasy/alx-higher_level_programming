@@ -7,7 +7,4 @@ request
   .get(args[0])
   .on('response', (response) => {
     console.log(`code: ${response.statusCode}`);
-  })
-  .on('error', (err) => {
-    console.error(err);
   });
